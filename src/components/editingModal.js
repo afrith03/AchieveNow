@@ -37,8 +37,8 @@ function EditingModal({showModal,selectedItem,handleChange,handleAfterEdit}) {
             className="select select-ghost w-full max-w-xs"
             value={selectedItem.state}
           >
-            {status.map((item,i) => (
-              <option key={i} value={item}>
+            {status.map((item) => (
+              <option key={item} value={item}>
                 {item}
               </option>
             ))}

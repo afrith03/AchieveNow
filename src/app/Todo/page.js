@@ -1,9 +1,8 @@
 // import React, { useEffect } from "react";
 "use client";
 import Loader from "@/components/Loader";
-import Navbar from "@/components/Navbar";
 import EditingModal from "@/components/editingModal";
-import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 function Todos() {
@@ -14,7 +13,7 @@ function Todos() {
 
   // const [summary, setSummary] = useState("");
   const [loading, setloading] = useState(false);
-
+  const router = useRouter();
   const [selectedItem, setselectedItem] = useState({
     _id: "",
     title: "",
@@ -42,7 +41,6 @@ function Todos() {
           setloading(false);
         })
         .catch((err) => {
-          alert("error");
           console.log("error", err);
           setloading(false);
         });
@@ -89,8 +87,8 @@ function Todos() {
         setTodos(res.data);
       })
       .catch((err) => {
-        alert("error");
-        console.log("error", err);
+             console.log("error", err);
+        router.push("/", { scroll: false });
       });
   }, []);
   async function fetchTodo() {
@@ -104,7 +102,6 @@ function Todos() {
 
   return (
     <div>
-      <Navbar />
       <nav className="grid grid-cols-10 mt-5">
         <section className="col-span-3">
           <div className="flex flex-col gap-4">
