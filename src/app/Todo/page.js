@@ -39,10 +39,14 @@ function Todos() {
           console.log("response data ", res.data);
           setTodos(res.data);
           setloading(false);
+          if (res.code>205){
+            router.push("/", { scroll: false });
+          }
         })
         .catch((err) => {
           console.log("error", err);
           setloading(false);
+          
         });
     }, 1000);
 
@@ -83,8 +87,12 @@ function Todos() {
     fetchTodo()
       .then((res) => {
         console.log("response is ", res);
+        if (res.code>205){
+          router.push("/", { scroll: false });
+        }
         console.log("response data ", res.data);
         setTodos(res.data);
+
       })
       .catch((err) => {
              console.log("error", err);
