@@ -110,9 +110,9 @@ function Todos() {
           <div className="flex flex-col gap-4">
             {Todos.map((item, index) => {
               return (
-                <div className="flex justify-center ">
+                <div   key={index} className="flex justify-center ">
                   <button
-                    key={index}
+                  
                     onClick={() => {
                       setCategory(item.category);
                     }}
@@ -132,7 +132,7 @@ function Todos() {
           {Todos.filter((item) => item.category === category).map((item) => {
             console.log("youthnesss", item);
             return (
-              <div>
+              <div key={subItem._id}>
                 {item.data.map((subItem) => {
                   // console.log(subItem);
                   return (

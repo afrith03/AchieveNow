@@ -7,6 +7,7 @@ function EditingModal({showModal,selectedItem,handleChange,handleAfterEdit}) {
          <input
         type="checkbox"
         checked={showModal}
+        onChange={handleChange} // dummy
         id="my_modal_7"
         className="modal-toggle"
       />
@@ -36,8 +37,8 @@ function EditingModal({showModal,selectedItem,handleChange,handleAfterEdit}) {
             className="select select-ghost w-full max-w-xs"
             value={selectedItem.state}
           >
-            {status.map((item) => (
-              <option value={item} selected={item === selectedItem.state}>
+            {status.map((item,i) => (
+              <option key={i} value={item}>
                 {item}
               </option>
             ))}
