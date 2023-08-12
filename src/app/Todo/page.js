@@ -104,15 +104,14 @@ function Todos() {
 
   return (
     <div>
-     <Navbar/>
+      <Navbar />
       <nav className="grid grid-cols-10 mt-5">
         <section className="col-span-3">
           <div className="flex flex-col gap-4">
             {Todos.map((item, index) => {
               return (
-                <div   key={index} className="flex justify-center ">
+                <div key={index} className="flex justify-center ">
                   <button
-                  
                     onClick={() => {
                       setCategory(item.category);
                     }}
@@ -129,56 +128,58 @@ function Todos() {
         </section>
 
         <section className="col-span-7 ">
-          {Todos.filter((item) => item.category === category).map((item) => {
-            console.log("youthnesss", item);
-            return (
-              <div key={subItem._id}>
-                {item.data.map((subItem) => {
-                  // console.log(subItem);
-                  return (
-                    <div className="mt-3 mr-5">
-                      {/* {subItem.title} */}
-                      <div className="collapse bg-base-200">
-                        <input type="checkbox" />
-                        <div className="collapse-title text-xl font-medium">
-                          {subItem.title}
-                        </div>
-                        <div className="collapse-content">
-                          <div className="flex justify-between">
-                            <p className="textarea textarea-ghost">
-                              {subItem.summary}
-                            </p>
-                            <div className="flex items-center gap-4">
-                              <p>{subItem.state}</p>
-                              <button
-                                onClick={() => {
-                                  setselectedItem(subItem);
-                                  console.log("inside sub text", subItem);
-                                  setshowModal(true);
-                                }}
-                                className="btn btn-active"
-                              >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="16"
-                                  height="16"
-                                  fill="currentColor"
-                                  class="bi bi-pen"
-                                  viewBox="0 0 16 16"
+          {Todos.filter((item) => item.category === category).map(
+            (item, index) => {
+              console.log("youthnesss", item);
+              return (
+                <div key={index}>
+                  {item.data.map((subItem) => {
+                    // console.log(subItem);
+                    return (
+                      <div className="mt-3 mr-5">
+                        {/* {subItem.title} */}
+                        <div className="collapse bg-base-200">
+                          <input type="checkbox" />
+                          <div className="collapse-title text-xl font-medium">
+                            {subItem.title}
+                          </div>
+                          <div className="collapse-content">
+                            <div className="flex justify-between">
+                              <p className="textarea textarea-ghost">
+                                {subItem.summary}
+                              </p>
+                              <div className="flex items-center gap-4">
+                                <p>{subItem.state}</p>
+                                <button
+                                  onClick={() => {
+                                    setselectedItem(subItem);
+                                    console.log("inside sub text", subItem);
+                                    setshowModal(true);
+                                  }}
+                                  className="btn btn-active"
                                 >
-                                  <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
-                                </svg>
-                              </button>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="16"
+                                    height="16"
+                                    fill="currentColor"
+                                    class="bi bi-pen"
+                                    viewBox="0 0 16 16"
+                                  >
+                                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+                                  </svg>
+                                </button>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
-              </div>
-            );
-          })}
+                    );
+                  })}
+                </div>
+              );
+            }
+          )}
         </section>
       </nav>
       {/* The button to open modal */}
