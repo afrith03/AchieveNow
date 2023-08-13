@@ -110,14 +110,14 @@ function SignupComponent() {
       ...creds,
       [evt.target.name]: value,
     });
-  }
-
+  };
+let islocal = false;
   //   https://todo-server-ayvx-dev-branch.vercel.app/
 
   // https://todo-server-beta-two.vercel.app/post/signup
   let handleLogin = () => {
     if (creds.password.length > 1 && creds.userName.length > 3) {
-      fetch(`https://todo-server-beta-two.vercel.app/post/signup`, {
+      fetch(`${islocal ?"https://todo-server-ayvx-dev-branch.vercel.app/post/signup":"https://todo-server-beta-two.vercel.app/post/signup"}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
