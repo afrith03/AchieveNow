@@ -108,7 +108,7 @@ function Todos() {
   }
   return (
     <div>
-      {Todos.length > 0 ? (
+      {Array.isArray(Todos) && Todos.length ? (
         <div>
           <nav className="grid grid-cols-10 mt-5">
             <section className="col-span-3">
