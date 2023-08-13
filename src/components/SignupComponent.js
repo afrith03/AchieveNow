@@ -15,7 +15,7 @@ function SignupComponent() {
     "Aesthetigender - A type of gender identity derived from aesthetics.",
     "Affectugender - Based on the person’s mood swings or fluctuations.",
     "Allygender - The opposite of strangergender. ",
-    "Akbar Sha Friend - So you are friend of a uncivilized black nigga?",
+    // "Akbar Sha Friend - So you are friend of a uncivilized black nigga?",
     "Agenderflux - Mostly agender with brief shifts of belonging to other gender types.",
     "Alexigender - Fluid gender identity between more than one type of gender.",
     "Anthropogender - Gender based on an individual's body shape rather than their appearance",
