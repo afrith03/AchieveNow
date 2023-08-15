@@ -15,7 +15,7 @@ function SignupComponent() {
     "Aesthetigender - A type of gender identity derived from aesthetics.",
     "Affectugender - Based on the person’s mood swings or fluctuations.",
     "Allygender - The opposite of strangergender. ",
-    // "Akbar Sha Friend - So you are friend of a uncivilized black nigga?",
+    "Akbar Sha Friend - So you are friend of a uncivilized black nigga?",
     "Agenderflux - Mostly agender with brief shifts of belonging to other gender types.",
     "Alexigender - Fluid gender identity between more than one type of gender.",
     "Anthropogender - Gender based on an individual's body shape rather than their appearance",
@@ -110,14 +110,14 @@ function SignupComponent() {
       ...creds,
       [evt.target.name]: value,
     });
-  };
-let islocal = false;
+  }
+
   //   https://todo-server-ayvx-dev-branch.vercel.app/
 
   // https://todo-server-beta-two.vercel.app/post/signup
   let handleLogin = () => {
     if (creds.password.length > 1 && creds.userName.length > 3) {
-      fetch(`${islocal ?"https://todo-server-ayvx-dev-branch.vercel.app/post/signup":"https://todo-server-beta-two.vercel.app/post/signup"}`, {
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND}/post/signup"}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
