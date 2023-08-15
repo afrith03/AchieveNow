@@ -12,7 +12,12 @@ function Todos() {
   const [Todos, setTodos] = useState([]);
   const [category, setCategory] = useState("");
   const [showModal, setshowModal] = useState(false);
-  const [categoryList, setcategoryList] = useState([]);
+
+  const [categoryList, setcategoryList] = useState([
+    "Home",
+    "Work",
+    "Learning",
+  ]);
 
   // const [summary, setSummary] = useState("");
   const [loading, setloading] = useState(false);
@@ -69,41 +74,59 @@ function Todos() {
     }
     setloading(false);
   };
-  const handleAfterEdit = () => {
-    setloading(true);
-    changeDetails(
-      selectedItem.title,
-      selectedItem.category,
-      selectedItem.summary,
-      selectedItem.state,
-      selectedItem._id
-    );
 
-    setTimeout(() => {
-      fetchTodo()
-        .then((res) => {
-          console.log("response is ", res);
-          console.log("response data ", res.data);
-          setTodos(res.data);
-          setloading(false);
-          if (res.code > 205) {
-            router.push("/", { scroll: false });
-          }
-        })
-        .catch((err) => {
-          console.log("error", err);
-          setloading(false);
-        });
-    }, 1000);
-    setselectedItem({
-      _id: "",
-      title: "",
-      category: "",
-      summary: "",
-      state: "",
-      createdBy: "",
-    });
-    setshowModal(false);
+  const handleAfterEdit = () => {
+    if (
+      selectedItem.category === "" ||
+      selectedItem.summary === "" ||
+      selectedItem.title === "" ||
+      selectedItem.state === ""
+    ) {
+      setselectedItem({
+        _id: "",
+        title: "",
+        category: "",
+        summary: "",
+        state: "",
+        createdBy: "",
+      });
+      setshowModal(false);
+    } else {
+      setloading(true);
+      changeDetails(
+        selectedItem.title,
+        selectedItem.category,
+        selectedItem.summary,
+        selectedItem.state,
+        selectedItem._id
+      );
+
+      setTimeout(() => {
+        fetchTodo()
+          .then((res) => {
+            console.log("response is ", res);
+            console.log("response data ", res.data);
+            setTodos(res.data);
+            setloading(false);
+            if (res.code > 205) {
+              router.push("/", { scroll: false });
+            }
+          })
+          .catch((err) => {
+            console.log("error", err);
+            setloading(false);
+          });
+      }, 1000);
+      setselectedItem({
+        _id: "",
+        title: "",
+        category: "",
+        summary: "",
+        state: "",
+        createdBy: "",
+      });
+      setshowModal(false);
+    }
   };
   function handleChange(evt) {
     const value =
@@ -134,6 +157,24 @@ function Todos() {
     );
     return await response.json();
   }
+
+  useEffect(() => {
+    let newArray = [];
+    Todos?.map((item) => newArray.push(item.category));
+
+    function removeDuplicates(arr) {
+      let unique = [];
+      arr.forEach((element) => {
+        if (!unique.includes(element)) {
+          unique.push(element);
+        }
+      });
+      return unique;
+    }
+
+    setcategoryList(removeDuplicates([...newArray, ...categoryList]));
+    console.log("yuuuuuuuuuuuuuuuuuuuuuu", categoryList);
+  }, [showModal]);
 
   //async Todo fetching
   useEffect(() => {
@@ -272,7 +313,7 @@ function Todos() {
           {/* Put this part before </body> tag */}
           <EditingModal
             showModal={showModal}
-            Todos={Todos}
+            categoryList={categoryList}
             selectedItem={selectedItem}
             setshowModal={setshowModal}
             handleChange={handleChange}
@@ -308,28 +349,30 @@ function Todos() {
                   "No Todo are currently available for you. Create your first
                   Todo with the below botton."
                 </p>
-              <AddTodoBotton
-              setshowModal={setshowModal}
-              showModal={showModal}
-              setselectedItem={setselectedItem}
-              selectedItem={selectedItem}
-              handleChange={handleChange}
-              handleAfterEdit={handleAfterEdit}
-            />
-             <EditingModal
-            showModal={showModal}
-            Todos={Todos}
-            selectedItem={selectedItem}
-            setshowModal={setshowModal}
-            handleChange={handleChange}
-            setselectedItem={setselectedItem}
-            handleAfterEdit={handleAfterEdit}
-          />
+                <AddTodoBotton
+                  setshowModal={setshowModal}
+                  showModal={showModal}
+                  setselectedItem={setselectedItem}
+                  selectedItem={selectedItem}
+                  handleChange={handleChange}
+                  handleAfterEdit={handleAfterEdit}
+                />
+                <EditingModal
+                  showModal={showModal}
+                  categoryList={categoryList}
+                  selectedItem={selectedItem}
+                  setshowModal={setshowModal}
+                  handleChange={handleChange}
+                  setselectedItem={setselectedItem}
+                  handleAfterEdit={handleAfterEdit}
+                />
               </div>
             </div>
           </div>
           <Link className="fixed right-10 bottom-12" href={"RandomPics"}>
-            <button className="btn btn-outline btn-success">Try Image discovery?</button>
+            <button className="btn btn-outline btn-success">
+              Try Image discovery?
+            </button>
           </Link>
         </div>
       )}

@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import AddTodoBotton from "./AddTodoBotton";
 
 function EditingModal({
   showModal,
   selectedItem,
   handleChange,
   handleAfterEdit,
-  Todos,
   setshowModal,
-  setselectedItem
-}) {
+  categoryList,
+  setselectedItem,
+  }) {
   let status = ["OPEN", "PROGRESS", "COMPLETED", "CANCELLED"];
   const [categorySwap, setcategorySwap] = useState(false);
+  
   return (
     <div>
       <input
@@ -33,8 +33,8 @@ function EditingModal({
                   summary: "",
                   state: "",
                   createdBy: "",
-                })
-                setshowModal(false)
+                });
+                setshowModal(false);
               }}
               title="Create new category"
               className="btn btn-circle mb-3"
@@ -68,9 +68,10 @@ function EditingModal({
                 className="select select-ghost w-full "
                 value={selectedItem.category}
               >
-                {Todos.map((item) => (
-                  <option key={item.category} value={item.category}>
-                    {item.category}
+                <option defaultValue={true}>Select category</option>
+                {categoryList.map((item, i) => (
+                  <option key={item} value={item} selected={true}>
+                    {item}
                   </option>
                 ))}
               </select>
@@ -109,7 +110,10 @@ function EditingModal({
               className="select select-ghost w-full"
               value={selectedItem.state}
             >
-              {status.map((item) => (
+              <option defaultValue={true} value={""}>
+                Select status
+              </option>
+              {status.map((item, i) => (
                 <option key={item} value={item}>
                   {item}
                 </option>
