@@ -117,7 +117,7 @@ function SignupComponent() {
   // https://todo-server-beta-two.vercel.app/post/signup
   let handleLogin = () => {
     if (creds.password.length > 1 && creds.userName.length > 3) {
-      fetch(`${process.env.NEXT_PUBLIC_BACKEND}/post/signup"}`, {
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND}/post/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
