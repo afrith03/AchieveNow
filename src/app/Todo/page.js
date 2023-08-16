@@ -242,11 +242,11 @@ function Todos() {
                             <div className="collapse bg-base-200">
                               <input type="checkbox" />
                               <div className="collapse-title text-xl font-medium">
-                                {subItem.title}
+                                {subItem.title}tghj
                               </div>
                               <div className="collapse-content">
                                 <div className="flex justify-between">
-                                  <p className="textarea textarea-ghost">
+                                  <p className="textarea max-w-md textarea-ghost">
                                     {subItem.summary}
                                   </p>
                                   <div className="flex flex-col items-center gap-4">
