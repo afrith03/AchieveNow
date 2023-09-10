@@ -11,6 +11,7 @@ function Navbar() {
       <ul className="menu menu-horizontal px-1">
         <li><Link href="/RandomPics">Image Discovery</Link></li>
         <li><Link href="/Todo">Todo</Link></li>
+        <li><Link href="/workspace">Work space</Link></li>
        
       </ul>
     </div>

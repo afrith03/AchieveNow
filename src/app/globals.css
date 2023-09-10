@@ -15,3 +15,21 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+/* styles/globals.css */
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Microsoft Edge */
+}
+
+body::-webkit-scrollbar {
+  width: 0.25rem; /* Adjust as needed */
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent; /* Background color of the track */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Color of the scrollbar thumb */
+  border: none; /* Border of the scrollbar thumb */
+}
